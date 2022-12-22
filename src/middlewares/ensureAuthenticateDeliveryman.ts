@@ -18,7 +18,6 @@ export async function ensureAuthenticateDeliveryman(req: Request, res: Response,
 
     try{
       const { sub } = verify(token,"22232f297a57a5a743894a0e4a801fc3") as PayloadDTO; 
-      console.log(sub);
       req.id_deliveryman = sub;
 
       return next();
