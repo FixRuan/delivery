@@ -10,7 +10,12 @@ export class CreateClientUseCase {
   async execute({username, password}: CreateClientUseCaseDTO){
       
     const clientAlreadyExists = await prisma.clients.findFirst({
-      where: {username: {mode: "insensitive"}}
+      where: {
+        username: {
+          equals: username,
+          mode: "insensitive"
+        }
+      }
     });
 
     if(clientAlreadyExists){
