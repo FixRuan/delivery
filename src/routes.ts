@@ -9,6 +9,7 @@ import {ensureAuthenticateClient} from "./middlewares/ensureAuthenticateClient";
 import {FindAllWithoutEndDateController} from "./modules/deliveries/useCases/FindAllWithoutEndDateController";
 import {ensureAuthenticateDeliveryman} from "./middlewares/ensureAuthenticateDeliveryman";
 import {UpdateDeliveryController} from "./modules/deliveries/useCases/UpdateDeliveryController";
+import {FindAllDeliveriesController} from "./modules/clients/useCases/deliveries/FindAllDeliveriesController";
 
 const createClientController = new CreateClientController();
 const createDeliveryController = new CreateDeliveryController();
@@ -17,6 +18,7 @@ const authenticateClientController = new AuthenticateClientController();
 const authenticateDeliverymanController = new AuthenticateDeliverymanController();
 const findAllWithoutEndDateController = new FindAllWithoutEndDateController();
 const updateDeliveryController = new UpdateDeliveryController();
+const findAllDeliveriesController= new FindAllDeliveriesController();
 
 const routes = Router();
 
@@ -27,6 +29,7 @@ routes.post("/client/authenticate", authenticateClientController.handle);
 routes.post("/deliveryman/authenticate", authenticateDeliverymanController.handle);
 routes.get("/delivery/available", ensureAuthenticateDeliveryman,findAllWithoutEndDateController.handle);
 routes.put("/delivery/updateDeliveryman/:id", ensureAuthenticateDeliveryman,updateDeliveryController.handle);
+routes.get("/client/deliveries/",ensureAuthenticateClient,findAllDeliveriesController.handle);
 
 export {routes};
 
