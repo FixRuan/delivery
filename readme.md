@@ -5,5 +5,4 @@
 - [x] Register deliveryman
 - [x] Deliveryman Authenticate
 - [x] Create Delivery
-- [ ] ...
-- [ ] ...
+- [x] Update Delivery
